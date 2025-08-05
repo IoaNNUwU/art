@@ -1,10 +1,8 @@
-I recently came up with an idea on how to make references easier to use and want to hear your feedback and ideas on this topic. This is not a Rust language proposal - I just want to explore some ideas.
-
-**What is the problem with references?**
+### What is the problem with references?
 
 Lifetimes are checked by the borrow checker. There is no physical limitation on taking a second mutable reference or taking an immutable one when a mutable is already present. Lifetimes can also dynamically change depending on your code. For example, by adding a new `println!(my_ref)` statement at the end of your function, you are telling the borrow checker to automatically increase the lifetime of `my_ref` to include this line.
 
-**Solution?**
+### Solution?
 
 Taking a reference to a value creates a new lifetime. What if instead of checking those scopes in the background and dynamically changing lifetimes after any code change, we declared them using a pair of curly braces?
 
